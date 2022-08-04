@@ -1,0 +1,78 @@
+version: '3.8'
+
+services:
+
+  auth-db:
+    container_name: auth-db-postgres
+    image: postgres
+    ports:
+      - 5433:5432
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: auth
+
+  produto-db:
+    container_name: produto-db-postgres
+    image: postgres
+    ports:
+      - 5434:5432
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: produto
+
+  vendas-db:
+    container_name: vendas-mongodb
+    image: tutum/mongodb
+    ports:
+      - 27017:27017
+      - 28017:28017
+    environment:
+      MONGODB_USER: admin
+      MONGODB_DATABASE: vendas
+      MONGODB_PASS: admin
+
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:3.8-management
+    ports:
+      - 5672:5672
+      - 15672:15672
+    volumes:
+      - $PWD/storage/rabbitmq1:/var/lib/rabbitmq
+    environment:
+      - RABBITMQ_ERLANG_COOKIE=secret_pass
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin
+  
+  auth-api:
+    build: './auth-api'
+    image: auth-api:1.0
+    container_name: auth-api
+    ports:
+      - 8080:8080
+    environment:
+      - PORT=8080
+  
+  vendas-api:
+    build: './vendas-api'
+    image: vendas-api:1.0
+    container_name: vendas-api
+    ports:
+      - 8082:8082
+    environment:
+      - PORT=8082
+    
+  produto-api:
+    build: './produto-api'
+    image: produto-api:1.0
+    container_name: produto-api
+    ports:
+      - 8081:8081
+    environment:
+      - PORT=8081
+
+volumes:
+  rabbitmq:
+
