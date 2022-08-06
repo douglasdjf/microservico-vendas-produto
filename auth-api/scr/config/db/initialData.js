@@ -21,4 +21,4 @@ export async function createInitialData() {
   } catch (err) {
     console.log(err);
   }
-};
+}

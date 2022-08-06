@@ -1,6 +1,5 @@
 import Sequelize from "sequelize";
 
-
 import {
   DB_NAME,
   DB_HOST,
