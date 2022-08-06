@@ -1,8 +1,7 @@
 #  Projeto yarn
 
-## Auth-api
 
-### Criar Projeto Yarn
+### Criar Projeto Yarn para o Auth-Api e Vendas-api
 ```
 yarn init -y
 ```
@@ -21,28 +20,37 @@ yarn add express
 yarn add cors nodemon -D
 ```
 
+```
+yarn add jsonwebtoken
+```
+
+```
+yarn add mongoose
+```
+
+```
+yarn add sequelize
+```
+
+```
+yarn add pg
+```
+
+```
+yarn add bcrypt
+```
+
 OBS: caso ocorra um erro de Execution_Policies desabilitada é necessário abrir o PoweShell(como administrador) e executar o comando
 
 ```
 Set-ExecutionPolicy Unrestricted
 ```
 
-## Vendas-api
-
 ### Iniciar aplicação node 
 ```
 yarn startDev
 ```
 
-### Adicionar Json Web Token
-```
-yarn add jsonwebtoken
-```
-
-### Adicionar Mongose
-```
-yarn add mongoose
-```
 
 
 #  Docker 
@@ -93,6 +101,7 @@ docker run --name produto-api -e PORT=8081 -p 8081:8081 produto-api:1.0
 # Docker compose
 
 ### Para iniciar toda a infraestrutura em um único comando é necessário utilizar o docker compose:
+
 
 ```
 docker-compose up --build
