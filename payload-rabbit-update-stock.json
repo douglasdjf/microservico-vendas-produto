@@ -1,0 +1,17 @@
+{
+    "vendaId": "dsajdhaskldhaskdash",
+    "produtos": [
+      {
+        "produtoId": 1001,
+        "quantidade": 3
+      },
+      {
+        "produtoId": 1002,
+        "quantidade": 4
+      },
+      {
+        "produtoId": 1003,
+        "quantidade": 4
+      }
+    ]
+  }

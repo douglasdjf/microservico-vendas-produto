@@ -44,4 +44,8 @@ public class Produto {
     public void prePersist(){
         dataCriacao = LocalDateTime.now();
     }
+
+    public void atualizaQuantidade(Integer qtd) {
+        quantidade = quantidade - qtd;
+    }
 }

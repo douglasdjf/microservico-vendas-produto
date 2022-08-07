@@ -53,4 +53,13 @@ public class ProdutoApiExceptionHandler  {
                 .path(request.getRequestURI())
                 .build());
     }
+
+
+    @ExceptionHandler(AuthenticationException.class)
+    public ResponseEntity<?> handleAuthenticationException(AuthenticationException authenticationException) {
+        var details = new ErroException();
+        details.setStatus(HttpStatus.UNAUTHORIZED.value());
+        details.setMensagem(authenticationException.getMessage());
+        return new ResponseEntity<>(details, HttpStatus.UNAUTHORIZED);
+    }
 }
