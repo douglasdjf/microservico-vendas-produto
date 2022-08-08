@@ -20,6 +20,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import javax.validation.ValidationException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -96,6 +97,7 @@ public class ProdutoService {
                                       .vendaId(produtoEstoqueDTO.getVendaId())
                                       .transactionId(produtoEstoqueDTO.getTransactionId())
                                       .status(VendasStatus.REJEITADO)
+                                      .timestamp(LocalDateTime.now())
                                       .build();
             vendaConfirmacaoPublisher.sendSalesConfirmationMessage(rejectedMessage);
         }
@@ -146,6 +148,7 @@ public class ProdutoService {
                     .vendaId(produtoEstoqueDTO.getVendaId())
                     .transactionId(produtoEstoqueDTO.getTransactionId())
                     .status(VendasStatus.APROVADO)
+                    .timestamp(LocalDateTime.now())
                     .build();
             vendaConfirmacaoPublisher.sendSalesConfirmationMessage(approvedMessage);
         }
