@@ -30,17 +30,17 @@ public class JwtService {
                     .getBody();
             var user = JwtResponse.getUser(claims);
             if (ObjectUtils.isEmpty(user) || ObjectUtils.isEmpty(user.getId())) {
-                throw new AuthenticationException("The user is not valid.");
+                throw new AuthenticationException("Usuário inválido");
             }
         } catch (Exception ex) {
             ex.printStackTrace();
-            throw new AuthenticationException("Error while trying to proccess the Access Token.");
+            throw new AuthenticationException("Erro ao processar Access Token");
         }
     }
 
     private String extractToken(String token) {
         if (!Strings.hasText(token)) {
-            throw new AuthenticationException("The access token was not informed.");
+            throw new AuthenticationException(" Access Token não informado");
         }
         if (token.contains(EMPTY_SPACE)) {
             return token.split(EMPTY_SPACE)[TOKEN_INDEX];

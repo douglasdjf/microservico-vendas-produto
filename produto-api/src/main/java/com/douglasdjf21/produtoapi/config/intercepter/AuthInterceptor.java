@@ -1,5 +1,6 @@
-package com.douglasdjf21.produtoapi.intercepter;
+package com.douglasdjf21.produtoapi.config.intercepter;
 
+import com.douglasdjf21.produtoapi.exception.BadRequestHeaderException;
 import com.douglasdjf21.produtoapi.jwt.service.JwtService;
 import feign.Request;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,7 @@ public class AuthInterceptor implements HandlerInterceptor {
             return true;
         }
         if (isEmpty(request.getHeader(TRANSACTION_ID))) {
-            throw new ValidationException("The transactionid header is required.");
+            throw new BadRequestHeaderException("A Transação header é requerida");
         }
         var authorization = request.getHeader(AUTHORIZATION);
         jwtService.validateAuthorization(authorization);

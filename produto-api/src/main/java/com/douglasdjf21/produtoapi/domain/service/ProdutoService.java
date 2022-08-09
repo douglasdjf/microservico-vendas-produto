@@ -1,12 +1,12 @@
 package com.douglasdjf21.produtoapi.domain.service;
 
 
-import com.douglasdjf21.produtoapi.domain.entity.Fornecedor;
+import com.douglasdjf21.produtoapi.client.VendasClient;
+import com.douglasdjf21.produtoapi.client.dto.VendaProdutoDTO;
 import com.douglasdjf21.produtoapi.domain.entity.Produto;
 import com.douglasdjf21.produtoapi.domain.respository.ProdutoRepository;
-import com.douglasdjf21.produtoapi.dto.FornecedorDTO;
-import com.douglasdjf21.produtoapi.dto.ProdutoDTO;
-import com.douglasdjf21.produtoapi.dto.ProdutoUpdateDTO;
+import com.douglasdjf21.produtoapi.dto.*;
+import com.douglasdjf21.produtoapi.exception.ValidacaoException;
 import com.douglasdjf21.produtoapi.listener.dto.ProdutoEstoqueDTO;
 import com.douglasdjf21.produtoapi.listener.dto.ProdutoQuantidadeDTO;
 import com.douglasdjf21.produtoapi.listener.dto.VendaConfirmadaDTO;
@@ -16,10 +16,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
 import javax.transaction.Transactional;
-import javax.validation.ValidationException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +43,9 @@ public class ProdutoService {
     @Autowired
     private ModelMapper modelMapper;
 
+    @Autowired
+    private VendasClient vendasClient;
+
     public ProdutoDTO salvar(ProdutoDTO produtoDTO){
         Produto produto = modelMapper.map(produtoDTO,Produto.class);
         return  modelMapper.map(produtoRepository.save(produto), ProdutoDTO.class);
@@ -55,7 +59,7 @@ public class ProdutoService {
 
         Optional<Produto> optionalProduto = produtoRepository.findById(id);
         if(!optionalProduto.isPresent())
-            throw new RuntimeException("Id inválido");
+            throw new ValidacaoException("Id inválido");
 
         Produto produtoNovo = modelMapper.map(produtoDTO,Produto.class);
         Produto produtoAntes = optionalProduto.get();
@@ -71,7 +75,7 @@ public class ProdutoService {
     public void delete(Long id) {
         Optional<Produto> optionalProduto = produtoRepository.findById(id);
         if(!optionalProduto.isPresent())
-            throw new RuntimeException("Id inválido");
+            throw new ValidacaoException("Id inválido");
 
         produtoRepository.deleteById(id);
     }
@@ -79,7 +83,7 @@ public class ProdutoService {
     public Produto findById(Long id) {
         return produtoRepository
                 .findById(id)
-                .orElseThrow(() -> new ValidationException("There's no product for the given ID."));
+                .orElseThrow(() -> new ValidacaoException("There's no product for the given ID."));
     }
 
 
@@ -111,17 +115,17 @@ public class ProdutoService {
     private void validaEstoqueAtualizaDados(ProdutoEstoqueDTO produtoEstoqueDTO) {
         if (isEmpty(produtoEstoqueDTO)
                 || isEmpty(produtoEstoqueDTO.getVendaId())) {
-            throw new ValidationException("The product data and the sales ID must be informed.");
+            throw new ValidacaoException("The product data and the sales ID must be informed.");
         }
         if (isEmpty(produtoEstoqueDTO.getProdutos())) {
-            throw new ValidationException("The sales' products must be informed.");
+            throw new ValidacaoException("The sales' products must be informed.");
         }
         produtoEstoqueDTO
                 .getProdutos()
                 .forEach(vendasProduto -> {
                     if (isEmpty(vendasProduto.getQuantidade())
                             || isEmpty(vendasProduto.getProdutoId())) {
-                        throw new ValidationException("The productID and the quantity must be informed.");
+                        throw new ValidacaoException("The productID and the quantity must be informed.");
                     }
                 });
     }
@@ -163,9 +167,51 @@ public class ProdutoService {
     private void validaQuantidadeEmEstoque(ProdutoQuantidadeDTO produtoQuantidadeDTO,
                                            Produto existingProduct) {
         if (produtoQuantidadeDTO.getQuantidade() > existingProduct.getQuantidade()) {
-            throw new ValidationException(
+            throw new ValidacaoException(
                     String.format("The product %s is out of stock.", existingProduct.getId()));
         }
     }
+
+    public ProdutoVendaDTO obterProdutoVendas(Long id) {
+        Produto produto = findById(id);
+        try{
+            VendaProdutoDTO vendasProdutoDto = vendasClient
+                                                    .obterVendasProdutoId(produto.getId())
+                                                    .orElseThrow(()->  new ValidacaoException("vendas não encontrada para o produto informado"));
+
+          ProdutoVendaDTO produtoVendas =  modelMapper.map(produto,ProdutoVendaDTO.class);
+          produtoVendas.inserirVendasIds(vendasProdutoDto.getVendaIds());
+          return produtoVendas;
+        }catch (Exception ex){
+            throw  new ValidacaoException("Erro ao tentar obter as vendas do produto");
+        }
+
+
+    }
+
+    public RetornoDTO checkProdutoEstoque(ProdutoValidaEstoqueDTO  produtoValidaEstoqueDTO){
+        if(ObjectUtils.isEmpty(produtoValidaEstoqueDTO) || ObjectUtils.isEmpty(produtoValidaEstoqueDTO.getProdutos()) )
+            throw new ValidacaoException("Produto de validação de estoque inválido");
+
+        produtoValidaEstoqueDTO
+                    .getProdutos()
+                    .forEach(this::validaEstoque);
+        return RetornoDTO.builder()
+                         .status(HttpStatus.OK.value())
+                         .message("Estoque está ok!")
+                         .build();
+
+    }
+
+    private void validaEstoque(ProdutoQuantidadeDTO produtoQuantidadeDTO){
+            if(ObjectUtils.isEmpty(produtoQuantidadeDTO.getQuantidade()) || ObjectUtils.isEmpty(produtoQuantidadeDTO.getProdutoId())){
+                throw new ValidacaoException("Dados do produto inválidos");
+            }
+            Produto produto = findById(produtoQuantidadeDTO.getProdutoId());
+            if(produtoQuantidadeDTO.getQuantidade()> produto.getQuantidade()){
+                throw  new ValidacaoException(String.format("Produto %s fora de estoque ",produto.getId()));
+            }
+    }
+
 
 }

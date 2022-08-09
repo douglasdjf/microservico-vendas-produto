@@ -4,10 +4,12 @@ import com.douglasdjf21.produtoapi.domain.entity.Categoria;
 import com.douglasdjf21.produtoapi.domain.entity.Produto;
 import com.douglasdjf21.produtoapi.domain.respository.CategoriaRepository;
 import com.douglasdjf21.produtoapi.dto.CategoriaDTO;
+import com.douglasdjf21.produtoapi.exception.ValidacaoException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 
 import java.util.List;
 import java.util.Optional;
@@ -36,7 +38,7 @@ public class CategoriaService {
 
        Optional<Categoria> optionalCategoria = repository.findById(id);
         if(!optionalCategoria.isPresent())
-                throw new RuntimeException("Id inválido");
+                throw new ValidacaoException("Id inválido");
 
         Categoria categoriaNovo = modelMapper.map(categoriaDTO,Categoria.class);
         Categoria categoriaAntes = optionalCategoria.get();
@@ -50,7 +52,7 @@ public class CategoriaService {
     public void delete(Long id) {
         Optional<Categoria> categoriaOptional = repository.findById(id);
         if(!categoriaOptional.isPresent())
-            throw new RuntimeException("Id inválido");
+            throw new ValidacaoException("Id inválido");
 
         repository.deleteById(id);
     }

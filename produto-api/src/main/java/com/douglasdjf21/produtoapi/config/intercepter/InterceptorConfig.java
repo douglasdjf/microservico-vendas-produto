@@ -1,6 +1,5 @@
-package com.douglasdjf21.produtoapi.config;
+package com.douglasdjf21.produtoapi.config.intercepter;
 
-import com.douglasdjf21.produtoapi.intercepter.AuthInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;

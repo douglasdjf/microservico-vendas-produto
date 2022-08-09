@@ -4,6 +4,7 @@ import com.douglasdjf21.produtoapi.domain.entity.Categoria;
 import com.douglasdjf21.produtoapi.domain.entity.Fornecedor;
 import com.douglasdjf21.produtoapi.domain.respository.FornecedorRepository;
 import com.douglasdjf21.produtoapi.dto.FornecedorDTO;
+import com.douglasdjf21.produtoapi.exception.ValidacaoException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,7 @@ public class FornecedorService {
 
         Optional<Fornecedor> optionalFornecedor = repository.findById(id);
         if(!optionalFornecedor.isPresent())
-            throw new RuntimeException("Id inválido");
+            throw new ValidacaoException("Id inválido");
 
         Fornecedor fornecedorNovo = modelMapper.map(fornecedorDTO,Fornecedor.class);
         Fornecedor fornecedorAntes = optionalFornecedor.get();
@@ -49,7 +50,7 @@ public class FornecedorService {
     public void delete(Long id) {
         Optional<Fornecedor> fornecedorOptional = repository.findById(id);
         if(!fornecedorOptional.isPresent())
-            throw new RuntimeException("Id inválido");
+            throw new ValidacaoException("Id inválido");
 
         repository.deleteById(id);
     }

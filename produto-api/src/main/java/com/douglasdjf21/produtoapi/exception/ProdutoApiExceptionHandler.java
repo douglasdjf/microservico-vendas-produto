@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 
-@RestControllerAdvice
 @ControllerAdvice
 public class ProdutoApiExceptionHandler  {
 
@@ -21,7 +20,6 @@ public class ProdutoApiExceptionHandler  {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ErroException> handleValidationException(MethodArgumentNotValidException ex,HttpServletRequest request){
-
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ErroException.builder()
                                     .timestamp(LocalDateTime.now())
                                     .error("Erro de validação")
@@ -56,10 +54,40 @@ public class ProdutoApiExceptionHandler  {
 
 
     @ExceptionHandler(AuthenticationException.class)
-    public ResponseEntity<?> handleAuthenticationException(AuthenticationException authenticationException) {
-        var details = new ErroException();
-        details.setStatus(HttpStatus.UNAUTHORIZED.value());
-        details.setMensagem(authenticationException.getMessage());
-        return new ResponseEntity<>(details, HttpStatus.UNAUTHORIZED);
+    public ResponseEntity<ErroException> handleAuthenticationException(AuthenticationException authenticationException, HttpServletRequest request) {
+
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(ErroException.builder()
+                .timestamp(LocalDateTime.now())
+                .error("Erro autenticação")
+                .mensagem(authenticationException.getMessage())
+                .status(HttpStatus.UNAUTHORIZED.value())
+                .path(request.getRequestURI())
+                .build());
+    }
+
+    @ExceptionHandler(BadRequestHeaderException.class)
+    public ResponseEntity<ErroException> handleHeaderRequestException(BadRequestHeaderException badRequestHeaderException,  HttpServletRequest request) {
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ErroException.builder()
+                .timestamp(LocalDateTime.now())
+                .error("Error header requerido")
+                .mensagem(badRequestHeaderException.getMessage())
+                .status(HttpStatus.BAD_REQUEST.value())
+                .path(request.getRequestURI())
+                .build());
+
+    }
+
+    @ExceptionHandler(ValidacaoException.class)
+    public ResponseEntity<ErroException> handleValidacaoException(ValidacaoException ex,  HttpServletRequest request) {
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ErroException.builder()
+                .timestamp(LocalDateTime.now())
+                .error("Erro validação")
+                .mensagem(ex.getMessage())
+                .status(HttpStatus.BAD_REQUEST.value())
+                .path(request.getRequestURI())
+                .build());
+
     }
 }

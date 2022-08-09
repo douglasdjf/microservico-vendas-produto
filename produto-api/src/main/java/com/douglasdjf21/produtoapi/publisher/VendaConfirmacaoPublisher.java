@@ -25,11 +25,11 @@ public class VendaConfirmacaoPublisher {
 
     public void sendSalesConfirmationMessage(@Payload VendaConfirmadaDTO message) {
         try {
-            log.info("Sending message: {}", new ObjectMapper().writeValueAsString(message));
+            log.info("Enviando mensagem : {}", new ObjectMapper().writeValueAsString(message));
             rabbitTemplate.convertAndSend(productTopicExchange, salesConfirmationKey, message);
-            log.info("Message was sent successfully!");
+            log.info("Mensagem enviada com sucesso!");
         } catch (Exception ex) {
-            log.info("Error while trying to send sales confirmation message: ", ex);
+            log.info("Erro ao enviar mensagem: ", ex);
         }
     }
 }

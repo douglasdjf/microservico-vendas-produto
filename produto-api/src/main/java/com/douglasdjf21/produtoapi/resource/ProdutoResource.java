@@ -2,8 +2,7 @@ package com.douglasdjf21.produtoapi.resource;
 
 
 import com.douglasdjf21.produtoapi.domain.service.ProdutoService;
-import com.douglasdjf21.produtoapi.dto.ProdutoDTO;
-import com.douglasdjf21.produtoapi.dto.ProdutoUpdateDTO;
+import com.douglasdjf21.produtoapi.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -45,4 +44,16 @@ public class ProdutoResource {
         produtoService.delete(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PostMapping("check-estoque")
+    public ResponseEntity<RetornoDTO> checkProdutoEstoque(@RequestBody  ProdutoValidaEstoqueDTO  produtoValidaEstoqueDTO){
+            return ResponseEntity.ok(produtoService.checkProdutoEstoque(produtoValidaEstoqueDTO));
+    }
+
+    @GetMapping("{id}/vendas")
+    public ProdutoVendaDTO obterProdutosVendas(@PathVariable Long id) {
+        return produtoService.obterProdutoVendas(id);
+    }
+
+
 }
