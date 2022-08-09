@@ -73,6 +73,9 @@ class UserService {
       let response = {
         status: httpStatus.SUCCESS,
         accessToken,
+        expiresIn: "1d",
+        transactionid,
+        serviceid
       };
       console.info(
         `Response to POST login with data ${JSON.stringify(
