@@ -3,46 +3,54 @@ version: '3.8'
 services:
 
   auth-db:
-    container_name: auth-db-postgres
+    container_name: auth-db
     image: postgres
+    restart: always
+    networks:
+      - vendas-network
     ports:
       - 5433:5432
     environment:
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_USER: postgres
-      POSTGRES_DB: auth
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=auth
 
   produto-db:
-    container_name: produto-db-postgres
+    container_name: produto-db
     image: postgres
+    restart: always
+    networks:
+      - vendas-network
     ports:
       - 5434:5432
     environment:
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_USER: postgres
-      POSTGRES_DB: produto
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=produto
 
   vendas-db:
-    container_name: vendas-mongodb
-    image: tutum/mongodb
+    container_name: vendas-db
+    image: mongo:latest
+    restart: always
+    networks:
+      - vendas-network
     ports:
       - 27017:27017
       - 28017:28017
     environment:
-      MONGODB_USER: admin
-      MONGODB_DATABASE: vendas
-      MONGODB_PASS: admin
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
 
-  rabbitmq:
+  rabbitmq-vendas:
     container_name: rabbitmq
     image: rabbitmq:3.8-management
+    networks:
+      - vendas-network
     ports:
       - 5672:5672
+      - 25676:25676
       - 15672:15672
-    volumes:
-      - $PWD/storage/rabbitmq1:/var/lib/rabbitmq
     environment:
-      - RABBITMQ_ERLANG_COOKIE=secret_pass
       - RABBITMQ_DEFAULT_USER=admin
       - RABBITMQ_DEFAULT_PASS=admin
   
@@ -50,6 +58,10 @@ services:
     build: './auth-api'
     image: auth-api:1.0
     container_name: auth-api
+    depends_on:
+      - auth-db
+    networks:
+      - vendas-network
     ports:
       - 8080:8080
     environment:
@@ -59,6 +71,12 @@ services:
     build: './vendas-api'
     image: vendas-api:1.0
     container_name: vendas-api
+    depends_on:
+      - vendas-db
+      - produto-api
+      - rabbitmq-vendas
+    networks:
+      - vendas-network
     ports:
       - 8082:8082
     environment:
@@ -68,11 +86,18 @@ services:
     build: './produto-api'
     image: produto-api:1.0
     container_name: produto-api
+    depends_on:
+      - produto-db
+      - rabbitmq-vendas
+    networks:
+      - vendas-network
     ports:
       - 8081:8081
     environment:
       - PORT=8081
 
-volumes:
-  rabbitmq:
+
+networks:
+  vendas-network:
+    driver: bridge
 
