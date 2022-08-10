@@ -1,8 +1,11 @@
 package com.douglasdjf21.produtoapi.exception.model;
 
-import lombok.*;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
@@ -11,11 +14,13 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 @Data
-public class ErroException extends RuntimeException {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class ErroException {
 
     private LocalDateTime timestamp;
     private Integer status;
-    private String mensagem;
+    private String message;
     private String error;
     private String path;
+
 }

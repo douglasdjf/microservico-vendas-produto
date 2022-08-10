@@ -8,7 +8,6 @@ import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
@@ -23,7 +22,7 @@ public class ProdutoApiExceptionHandler  {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ErroException.builder()
                                     .timestamp(LocalDateTime.now())
                                     .error("Erro de validação")
-                                    .mensagem(ex.getMessage())
+                                    .message(ex.getMessage())
                                     .status(HttpStatus.BAD_REQUEST.value())
                                     .path(request.getRequestURI())
                                     .build());
@@ -35,7 +34,7 @@ public class ProdutoApiExceptionHandler  {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ErroException.builder()
                 .timestamp(LocalDateTime.now())
                 .error("Formato de mensagem inválido")
-                .mensagem(ex.getMessage())
+                .message(ex.getMessage())
                 .status(HttpStatus.BAD_REQUEST.value())
                 .path(request.getRequestURI())
                 .build());
@@ -46,7 +45,7 @@ public class ProdutoApiExceptionHandler  {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ErroException.builder()
                 .timestamp(LocalDateTime.now())
                 .error("Erro persistência de dados")
-                .mensagem(ex.getMessage())
+                .message(ex.getMessage())
                 .status(HttpStatus.INTERNAL_SERVER_ERROR.value())
                 .path(request.getRequestURI())
                 .build());
@@ -59,7 +58,7 @@ public class ProdutoApiExceptionHandler  {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(ErroException.builder()
                 .timestamp(LocalDateTime.now())
                 .error("Erro autenticação")
-                .mensagem(authenticationException.getMessage())
+                .message(authenticationException.getMessage())
                 .status(HttpStatus.UNAUTHORIZED.value())
                 .path(request.getRequestURI())
                 .build());
@@ -71,7 +70,7 @@ public class ProdutoApiExceptionHandler  {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ErroException.builder()
                 .timestamp(LocalDateTime.now())
                 .error("Error header requerido")
-                .mensagem(badRequestHeaderException.getMessage())
+                .message(badRequestHeaderException.getMessage())
                 .status(HttpStatus.BAD_REQUEST.value())
                 .path(request.getRequestURI())
                 .build());
@@ -84,7 +83,7 @@ public class ProdutoApiExceptionHandler  {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ErroException.builder()
                 .timestamp(LocalDateTime.now())
                 .error("Erro validação")
-                .mensagem(ex.getMessage())
+                .message(ex.getMessage())
                 .status(HttpStatus.BAD_REQUEST.value())
                 .path(request.getRequestURI())
                 .build());
