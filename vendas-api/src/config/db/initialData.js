@@ -5,22 +5,22 @@ export async function createInitialData() {
   try {
     let existingData = await Order.find();
     if (existingData && existingData.length > 0) {
-      console.info("Remove existing data...");
+      console.info("Remove dados existentes...");
       await Order.collection.drop();
     }
     await Order.create({
-      products: [
+      produtos: [
         {
-          productId: 1001,
-          quantity: 2,
+          produtoId: 1001,
+          quantidade: 2,
         },
         {
-          productId: 1002,
-          quantity: 1,
+          produtoId: 1002,
+          quantidade: 1,
         },
         {
-          productId: 1003,
-          quantity: 1,
+          produtoId: 1003,
+          quantidade: 1,
         },
       ],
       user: {
@@ -29,20 +29,20 @@ export async function createInitialData() {
         email: "usertest@gmail.com",
       },
       status: "APPROVED",
-      createdAt: new Date(),
-      updatedAt: new Date(),
+      dataCriacao: new Date(),
+      dataAtualizacao: new Date(),
       transactionid: uuidv4(),
       serviceid: uuidv4(),
     });
     await Order.create({
-      products: [
+      produtos: [
         {
-          productId: 1001,
-          quantity: 4,
+          produtoId: 1001,
+          quantidade: 4,
         },
         {
-          productId: 1003,
-          quantity: 2,
+          produtoId: 1003,
+          quantidade: 2,
         },
       ],
       user: {
@@ -51,8 +51,8 @@ export async function createInitialData() {
         email: "usertest2@gmail.com",
       },
       status: "REJECTED",
-      createdAt: new Date(),
-      updatedAt: new Date(),
+      dataCriacao: new Date(),
+      dataAtualizacao: new Date(),
       transactionid: uuidv4(),
       serviceid: uuidv4(),
     });

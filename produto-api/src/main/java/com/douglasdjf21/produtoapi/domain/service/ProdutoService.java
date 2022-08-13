@@ -115,17 +115,17 @@ public class ProdutoService {
     private void validaEstoqueAtualizaDados(ProdutoEstoqueDTO produtoEstoqueDTO) {
         if (isEmpty(produtoEstoqueDTO)
                 || isEmpty(produtoEstoqueDTO.getVendaId())) {
-            throw new ValidacaoException("The product data and the sales ID must be informed.");
+            throw new ValidacaoException("As informações do produto e vendas id deve ser informados .");
         }
         if (isEmpty(produtoEstoqueDTO.getProdutos())) {
-            throw new ValidacaoException("The sales' products must be informed.");
+            throw new ValidacaoException("Os produtos da venda devem ser informados.");
         }
         produtoEstoqueDTO
                 .getProdutos()
                 .forEach(vendasProduto -> {
                     if (isEmpty(vendasProduto.getQuantidade())
                             || isEmpty(vendasProduto.getProdutoId())) {
-                        throw new ValidacaoException("The productID and the quantity must be informed.");
+                        throw new ValidacaoException("O produto id e a quantidade devem ser informadas");
                     }
                 });
     }

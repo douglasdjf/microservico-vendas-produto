@@ -1,5 +1,6 @@
 package com.douglasdjf21.produtoapi.listener.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,5 +16,6 @@ public class ProdutoEstoqueDTO {
 
     private String vendaId;
     private List<ProdutoQuantidadeDTO> produtos;
+    @JsonProperty("transactionid")
     private String transactionId;
 }

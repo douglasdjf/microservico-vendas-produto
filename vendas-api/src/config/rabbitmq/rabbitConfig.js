@@ -22,7 +22,7 @@ async function connectRabbitMqAndCreateQueues() {
     if (error) {
       throw error;
     }
-    console.info("Starting RabbitMQ...");
+    console.info("Iniciando RabbitMQ...");
     createQueue(
       connection,
       PRODUCT_STOCK_UPDATE_QUEUE,
@@ -35,7 +35,7 @@ async function connectRabbitMqAndCreateQueues() {
       SALES_CONFIRMATION_ROUTING_KEY,
       PRODUCT_TOPIC
     );
-    console.info("Queues and Topics were defined.");
+    console.info("Queues e Topics inicializados");
     setTimeout(function () {
       connection.close();
     }, TWO_SECONDS);

@@ -19,6 +19,7 @@ class OrderService {
           orderData
         )} | [transactionID: ${transactionid} | serviceID: ${serviceid}]`
       );
+      console.log(orderData);
       this.validateOrderData(orderData);
       const { authUser } = req;
       const { authorization } = req.headers;
@@ -29,6 +30,7 @@ class OrderService {
         serviceid
       );
       await this.validateProductStock(order, authorization, transactionid);
+
       let createdOrder = await OrderRepository.save(order);
       this.sendMessage(createdOrder, transactionid);
       let response = {
@@ -53,42 +55,44 @@ class OrderService {
     return {
       status: PENDING,
       user: authUser,
-      createdAt: new Date(),
-      updatedAt: new Date(),
+      dataCriacao: new Date(),
+      dataAtualizacao: new Date(),
       transactionid,
       serviceid,
-      products: orderData.products,
+      produtos: orderData.produtos,
     };
   }
 
   async updateOrder(orderMessage) {
     try {
       const order = JSON.parse(orderMessage);
-      if (order.salesId && order.status) {
-        let existingOrder = await OrderRepository.findById(order.salesId);
+      if (order.vendaId && order.status) {
+        let existingOrder = await OrderRepository.findById(order.vendaId);
         if (existingOrder && order.status !== existingOrder.status) {
           existingOrder.status = order.status;
-          existingOrder.updatedAt = new Date();
+          existingOrder.dataAtualizacao = new Date();
           await OrderRepository.save(existingOrder);
         }
       } else {
         console.warn(
-          `The order message was not complete. TransactionID: ${orderMessage.transactionid}`
+          `Order não completada. TransactionID: ${orderMessage.transactionid}`
         );
       }
     } catch (err) {
-      console.error("Could not parse order message from queue.");
+      console.error("Não pode converter a order");
       console.error(err.message);
     }
   }
 
   validateOrderData(data) {
-    if (!data || !data.products) {
-      throw new OrderException(BAD_REQUEST, "The products must be informed.");
+    if (!data || !data.produtos) {
+      throw new OrderException(BAD_REQUEST, "Produtos não informado.");
     }
   }
 
   async validateProductStock(order, token, transactionid) {
+   console.log("validateProductStock");
+   console.log("order"+ order);
     let stockIsOk = await ProductClient.checkProducStock(
       order,
       token,
@@ -97,15 +101,15 @@ class OrderService {
     if (!stockIsOk) {
       throw new OrderException(
         BAD_REQUEST,
-        "The stock is out for the products."
+        "Os produtos estão fora de estoque."
       );
     }
   }
 
   sendMessage(createdOrder, transactionid) {
     const message = {
-      salesId: createdOrder.id,
-      products: createdOrder.products,
+      vendaId: createdOrder.id,
+      produtos: createdOrder.produtos,
       transactionid,
     };
     sendMessageToProductStockUpdateQueue(message);
@@ -116,19 +120,19 @@ class OrderService {
       const { id } = req.params;
       const { transactionid, serviceid } = req.headers;
       console.info(
-        `Request to GET order by ID ${id} | [transactionID: ${transactionid} | serviceID: ${serviceid}]`
+        `Resposta para ober a order por id ${id} | [transactionID: ${transactionid} | serviceID: ${serviceid}]`
       );
       this.validateInformedId(id);
       const existingOrder = await OrderRepository.findById(id);
       if (!existingOrder) {
-        throw new OrderException(BAD_REQUEST, "The order was not found.");
+        throw new OrderException(BAD_REQUEST, "A order não foi encontrada.");
       }
       let response = {
         status: SUCCESS,
         existingOrder,
       };
       console.info(
-        `Response to GET order by ID ${id}: ${JSON.stringify(
+        `Resposta para ober a order por id ${id}: ${JSON.stringify(
           response
         )} | [transactionID: ${transactionid} | serviceID: ${serviceid}]`
       );
@@ -171,13 +175,13 @@ class OrderService {
 
   async findbyProductId(req) {
     try {
-      const { productId } = req.params;
+      const { produtoId } = req.params;
       const { transactionid, serviceid } = req.headers;
       console.info(
-        `Request to GET orders by productID ${productId} | [transactionID: ${transactionid} | serviceID: ${serviceid}]`
+        `Request to GET orders by produtoId ${produtoId} | [transactionID: ${transactionid} | serviceID: ${serviceid}]`
       );
-      this.validateInformedProductId(productId);
-      const orders = await OrderRepository.findByProductId(productId);
+      this.validateInformedProductId(produtoId);
+      const orders = await OrderRepository.findByProductId(produtoId);
       if (!orders) {
         throw new OrderException(BAD_REQUEST, "No orders were found.");
       }
@@ -188,7 +192,7 @@ class OrderService {
         }),
       };
       console.info(
-        `Response to GET orders by productID ${productId}: ${JSON.stringify(
+        `Resposta para obter orden por produtoId ${produtoId}: ${JSON.stringify(
           response
         )} | [transactionID: ${transactionid} | serviceID: ${serviceid}]`
       );

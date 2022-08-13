@@ -10,33 +10,33 @@ class ProductClient {
         transactionid,
       };
       console.info(
-        `Sending request to Product API with data: ${JSON.stringify(
+        `Enviando requisição para Product API com dados: ${JSON.stringify(
           productsData
-        )} and transactionID ${transactionid}`
+        )} e transactionID ${transactionid}`
       );
       let response = false;
       await axios
         .post(
-          `${PRODUCT_API_URL}/check-stock`,
-          { products: productsData.products },
+          `${PRODUCT_API_URL}/check-estoque`,
+          { produtos: productsData.produtos },
           { headers }
         )
         .then((res) => {
           console.info(
-            `Success response from Product-API. TransactionID: ${transactionid}`
+            `Sucesso resposta do Product-API. TransactionID: ${transactionid}`
           );
           response = true;
         })
         .catch((err) => {
           console.error(
-            `Error response from Product-API. TransactionID: ${transactionid}`
+            `Error resposta do Product-API. TransactionID: ${transactionid}`
           );
           response = false;
         });
       return response;
     } catch (err) {
       console.error(
-        `Error response from Product-API. TransactionID: ${transactionid}`
+        `Error resposta do Product-API. TransactionID: ${transactionid}`
       );
       return false;
     }

@@ -8,9 +8,9 @@ export function connectMongoDb() {
     serverSelectionTimeoutMS: 180000,
   });
   mongoose.connection.on("connected", function () {
-    console.info("The application connected to MongoDB successfully!");
+    console.info("Sucesso ao conectar MongoDB!");
   });
   mongoose.connection.on("error", function () {
-    console.error("The application connected to MongoDB error!");
+    console.error("Erro ao conectar ao MongoDB!");
   });
 }

@@ -51,6 +51,10 @@ Set-ExecutionPolicy Unrestricted
 yarn startDev
 ```
 
+```
+yarn startContainer
+```
+
 
 
 #  Docker 

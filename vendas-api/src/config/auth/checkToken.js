@@ -12,7 +12,7 @@ export default async (req, res, next) => {
   try {
     let { authorization } = req.headers;
     if (!authorization) {
-      throw new AuthException(UNAUTHORIZED, "Access token was not informed.");
+      throw new AuthException(UNAUTHORIZED, "Access Token não informado.");
     }
     let accessToken = authorization;
     if (accessToken.includes(emptySpace)) {

@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const model = mongoose.model;
 
 const OrderSchema = new Schema({
-  products: {
+  produtos: {
     type: Array,
     required: true,
   },
@@ -16,11 +16,11 @@ const OrderSchema = new Schema({
     type: String,
     required: true,
   },
-  createdAt: {
+  dataCriacao: {
     type: Date,
     required: true,
   },
-  updatedAt: {
+  dataAtualizacao: {
     type: Date,
     required: true,
   },

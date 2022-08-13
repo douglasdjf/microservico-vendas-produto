@@ -17,14 +17,14 @@ export function sendMessageToProductStockUpdateQueue(message) {
       }
       let jsonStringMessage = JSON.stringify(message);
       console.info(
-        `Sending message to product update stock: ${jsonStringMessage}`
+        `Enviando mensagem para alterar o produto do estoque: ${jsonStringMessage}`
       );
       channel.publish(
         PRODUCT_TOPIC,
         PRODUCT_STOCK_UPDATE_ROUTING_KEY,
         Buffer.from(jsonStringMessage)
       );
-      console.info("Message was sent successfully!");
+      console.info("Mensagem enviada com sucesso!");
     });
   });
 }

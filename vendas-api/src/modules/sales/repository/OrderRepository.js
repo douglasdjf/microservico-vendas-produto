@@ -31,7 +31,7 @@ class OrderRepository {
   async findByProductId(productId) {
     try {
       return await Order.find({
-        "products.productId": Number(productId),
+        "produtos.produtoId": Number(productId),
       });
     } catch (error) {
       console.error(error.message);
