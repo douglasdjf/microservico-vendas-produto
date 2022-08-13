@@ -561,6 +561,44 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Order Por Produto Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/ecmascript",
+								"type": "text"
+							},
+							{
+								"key": "transactionid",
+								"value": "{{$guid}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlVzZXIgVGVzdCAxIiwiZW1haWwiOiJ0ZXN0ZXVzZXIxQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjAzNTAwNzMsImV4cCI6MTY2MDQzNjQ3M30.8QmdIOtBUQXhgLJN51Q4lZHyyKqde25du-lCIx7ftnA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8081/api/produto/1006/vendas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"produto",
+								"1006",
+								"vendas"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -706,7 +744,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"produtos\": [\r\n    {\r\n        \"produtoId\": 1001,\r\n        \"quantidade\": 1\r\n    },\r\n    {\r\n        \"produtoId\": 1003,\r\n        \"quantidade\": 1\r\n    },\r\n    {\r\n        \"produtoId\": 1003,\r\n        \"quantidade\": 1\r\n    }\r\n  ]\r\n}       ",
+							"raw": "{\r\n  \"produtos\": [\r\n    {\r\n        \"produtoId\": 1001,\r\n        \"quantidade\": 1\r\n    },\r\n    {\r\n        \"produtoId\": 1002,\r\n        \"quantidade\": 1\r\n    },\r\n    {\r\n        \"produtoId\": 1003,\r\n        \"quantidade\": 1\r\n    }\r\n  ]\r\n}       ",
 							"options": {
 								"raw": {
 									"language": "json"
