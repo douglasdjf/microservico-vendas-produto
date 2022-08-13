@@ -28,10 +28,10 @@ const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
 sequelize
   .authenticate()
   .then(() => {
-    console.info("Connection has been stablished!");
+    console.info("Conexão com banco de dados estabilizada!");
   })
   .catch((err) => {
-    console.error("Unable to connect to the database.");
+    console.error("Erro conexão com banco de dados.");
     console.error(err.message);
   });
 

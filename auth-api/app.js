@@ -36,5 +36,5 @@ app.use(tracing);
 app.use(userRoutes);
 
 app.listen(PORT, () => {
-  console.info(`Server iniciado com sucesso na porta ${PORT}`);
+  console.info(`Servidor iniciado com sucesso na porta ${PORT}`);
 });

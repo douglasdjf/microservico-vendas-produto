@@ -33,13 +33,13 @@ class UserService {
 
   validateRequestData(email) {
     if (!email) {
-      throw new UserException("User email was not informed.");
+      throw new UserException("Email não informado.");
     }
   }
 
   validateUserNotFound(user) {
     if (!user) {
-      throw new UserException(httpStatus.BAD_REQUEST, "User was not found.");
+      throw new UserException(httpStatus.BAD_REQUEST, "Usuário não encontrado.");
     }
   }
 
@@ -47,7 +47,7 @@ class UserService {
     if (!authUser || user.id !== authUser.id) {
       throw new UserException(
         httpStatus.FORBIDDEN,
-        "You cannot see this user data."
+        "Voce não tem acesso a esses dados."
       );
     }
   }
@@ -56,7 +56,7 @@ class UserService {
     try {
       const { transactionid, serviceid } = req.headers;
       console.info(
-        `Request to POST login with data ${JSON.stringify(
+        `Requisição POST login ${JSON.stringify(
           req.body
         )} | [transactionID: ${transactionid} | serviceID: ${serviceid}]`
       );
@@ -78,7 +78,7 @@ class UserService {
         serviceid
       };
       console.info(
-        `Response to POST login with data ${JSON.stringify(
+        `Resposta para o POST login ${JSON.stringify(
           response
         )} | [transactionID: ${transactionid} | serviceID: ${serviceid}]`
       );
@@ -95,7 +95,7 @@ class UserService {
     if (!email || !password) {
       throw new UserException(
         httpStatus.UNAUTHORIZED,
-        "Email and password must be informed."
+        "Email e senha deve ser informado."
       );
     }
   }
@@ -104,7 +104,7 @@ class UserService {
     if (!(await bcrypt.compare(password, hashPassword))) {
       throw new UserException(
         httpStatus.UNAUTHORIZED,
-        "Password doesn't match."
+        "Senha incorreta."
       );
     }
   }
