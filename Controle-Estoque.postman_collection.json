@@ -189,7 +189,7 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlVzZXIgVGVzdCAxIiwiZW1haWwiOiJ0ZXN0ZXVzZXIxQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjAwNzQ3MTIsImV4cCI6MTY2MDE2MTExMn0.SWvkrI_VxbcT2vBtuQgwg_dQrnOWIi8wVwYjEMiTPgQ",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlVzZXIgVGVzdCAxIiwiZW1haWwiOiJ0ZXN0ZXVzZXIxQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjAzNTAxNjMsImV4cCI6MTY2MDQzNjU2M30.W6FuX-_6J1E_6-jGTgx25-U1hsWbSMybhdVoJ3-kLyI",
 								"type": "text"
 							}
 						],
@@ -218,7 +218,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlVzZXIgVGVzdCAxIiwiZW1haWwiOiJ0ZXN0ZXVzZXIxQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjAwNzQxMDUsImV4cCI6MTY2MDE2MDUwNX0.uwd2EdkTrFmldhDWWYfLYtJP0KvbLbsLSQcgdgDI6_s",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlVzZXIgVGVzdCAxIiwiZW1haWwiOiJ0ZXN0ZXVzZXIxQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjAzNTAxNjMsImV4cCI6MTY2MDQzNjU2M30.W6FuX-_6J1E_6-jGTgx25-U1hsWbSMybhdVoJ3-kLyI",
 								"type": "text"
 							},
 							{
@@ -254,7 +254,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlVzZXIgVGVzdCAxIiwiZW1haWwiOiJ0ZXN0ZXVzZXIxQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjAwNzQxMDUsImV4cCI6MTY2MDE2MDUwNX0.uwd2EdkTrFmldhDWWYfLYtJP0KvbLbsLSQcgdgDI6_s",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlVzZXIgVGVzdCAxIiwiZW1haWwiOiJ0ZXN0ZXVzZXIxQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjAzNTAxNjMsImV4cCI6MTY2MDQzNjU2M30.W6FuX-_6J1E_6-jGTgx25-U1hsWbSMybhdVoJ3-kLyI",
 								"type": "text"
 							},
 							{
@@ -285,7 +285,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlVzZXIgVGVzdCAxIiwiZW1haWwiOiJ0ZXN0ZXVzZXIxQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjAwNzQxMDUsImV4cCI6MTY2MDE2MDUwNX0.uwd2EdkTrFmldhDWWYfLYtJP0KvbLbsLSQcgdgDI6_s",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlVzZXIgVGVzdCAxIiwiZW1haWwiOiJ0ZXN0ZXVzZXIxQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjAzNTAxNjMsImV4cCI6MTY2MDQzNjU2M30.W6FuX-_6J1E_6-jGTgx25-U1hsWbSMybhdVoJ3-kLyI",
 								"type": "text"
 							},
 							{
@@ -325,7 +325,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlVzZXIgVGVzdCAxIiwiZW1haWwiOiJ0ZXN0ZXVzZXIxQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjAwNzQxMDUsImV4cCI6MTY2MDE2MDUwNX0.uwd2EdkTrFmldhDWWYfLYtJP0KvbLbsLSQcgdgDI6_s",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlVzZXIgVGVzdCAxIiwiZW1haWwiOiJ0ZXN0ZXVzZXIxQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjAzNTAxNjMsImV4cCI6MTY2MDQzNjU2M30.W6FuX-_6J1E_6-jGTgx25-U1hsWbSMybhdVoJ3-kLyI",
 								"type": "text"
 							},
 							{
@@ -366,7 +366,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlVzZXIgVGVzdCAxIiwiZW1haWwiOiJ0ZXN0ZXVzZXIxQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjAwNzQxMDUsImV4cCI6MTY2MDE2MDUwNX0.uwd2EdkTrFmldhDWWYfLYtJP0KvbLbsLSQcgdgDI6_s",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlVzZXIgVGVzdCAxIiwiZW1haWwiOiJ0ZXN0ZXVzZXIxQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjAzNTAxNjMsImV4cCI6MTY2MDQzNjU2M30.W6FuX-_6J1E_6-jGTgx25-U1hsWbSMybhdVoJ3-kLyI",
 								"type": "text"
 							},
 							{
@@ -407,7 +407,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlVzZXIgVGVzdCAxIiwiZW1haWwiOiJ0ZXN0ZXVzZXIxQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjAwNzQxMDUsImV4cCI6MTY2MDE2MDUwNX0.uwd2EdkTrFmldhDWWYfLYtJP0KvbLbsLSQcgdgDI6_s",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlVzZXIgVGVzdCAxIiwiZW1haWwiOiJ0ZXN0ZXVzZXIxQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjAzNTAxNjMsImV4cCI6MTY2MDQzNjU2M30.W6FuX-_6J1E_6-jGTgx25-U1hsWbSMybhdVoJ3-kLyI",
 								"type": "text"
 							},
 							{
@@ -448,7 +448,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlVzZXIgVGVzdCAxIiwiZW1haWwiOiJ0ZXN0ZXVzZXIxQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjAwNzQxMDUsImV4cCI6MTY2MDE2MDUwNX0.uwd2EdkTrFmldhDWWYfLYtJP0KvbLbsLSQcgdgDI6_s",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlVzZXIgVGVzdCAxIiwiZW1haWwiOiJ0ZXN0ZXVzZXIxQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjAzNTAxNjMsImV4cCI6MTY2MDQzNjU2M30.W6FuX-_6J1E_6-jGTgx25-U1hsWbSMybhdVoJ3-kLyI",
 								"type": "text"
 							},
 							{
@@ -488,7 +488,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlVzZXIgVGVzdCAxIiwiZW1haWwiOiJ0ZXN0ZXVzZXIxQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjAwNzQxMDUsImV4cCI6MTY2MDE2MDUwNX0.uwd2EdkTrFmldhDWWYfLYtJP0KvbLbsLSQcgdgDI6_s",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlVzZXIgVGVzdCAxIiwiZW1haWwiOiJ0ZXN0ZXVzZXIxQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjAzNTAxNjMsImV4cCI6MTY2MDQzNjU2M30.W6FuX-_6J1E_6-jGTgx25-U1hsWbSMybhdVoJ3-kLyI",
 								"type": "text"
 							},
 							{
@@ -516,6 +516,214 @@
 							"path": [
 								"api",
 								"fornecedor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check-Estoque",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlVzZXIgVGVzdCAxIiwiZW1haWwiOiJ0ZXN0ZXVzZXIxQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjAzNTAxNjMsImV4cCI6MTY2MDQzNjU2M30.W6FuX-_6J1E_6-jGTgx25-U1hsWbSMybhdVoJ3-kLyI",
+								"type": "text"
+							},
+							{
+								"key": "transactionid",
+								"value": "{{$guid}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"produtos\": [\r\n      {\r\n        \"produtoId\": 1001,\r\n        \"quantidade\": 11\r\n      },\r\n      {\r\n        \"produtoId\": 1002,\r\n        \"quantidade\": 3\r\n      },\r\n      {\r\n        \"produtoId\": 1003,\r\n        \"quantidade\": 3\r\n      }\r\n    ]\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/produto/check-estoque",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"produto",
+								"check-estoque"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "vendas-api",
+			"item": [
+				{
+					"name": "Obter por Order Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/ecmascript",
+								"type": "text"
+							},
+							{
+								"key": "transactionid",
+								"value": "{{$guid}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlVzZXIgVGVzdCAxIiwiZW1haWwiOiJ0ZXN0ZXVzZXIxQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjAzNTAwNzMsImV4cCI6MTY2MDQzNjQ3M30.8QmdIOtBUQXhgLJN51Q4lZHyyKqde25du-lCIx7ftnA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8082/api/order/62f72b5f6ffe4f9175fb523a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"order",
+								"62f72b5f6ffe4f9175fb523a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obter Todos Order",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/ecmascript",
+								"type": "text"
+							},
+							{
+								"key": "transactionid",
+								"value": "{{$guid}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlVzZXIgVGVzdCAxIiwiZW1haWwiOiJ0ZXN0ZXVzZXIxQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjAzNTAwNzMsImV4cCI6MTY2MDQzNjQ3M30.8QmdIOtBUQXhgLJN51Q4lZHyyKqde25du-lCIx7ftnA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8082/api/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Order Por Produto Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/ecmascript",
+								"type": "text"
+							},
+							{
+								"key": "transactionid",
+								"value": "{{$guid}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlVzZXIgVGVzdCAxIiwiZW1haWwiOiJ0ZXN0ZXVzZXIxQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjAzNTAwNzMsImV4cCI6MTY2MDQzNjQ3M30.8QmdIOtBUQXhgLJN51Q4lZHyyKqde25du-lCIx7ftnA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8082/api/orders/produto/1002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"orders",
+								"produto",
+								"1002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Incluir Order",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "transactionid",
+								"value": "{{$guid}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlVzZXIgVGVzdCAxIiwiZW1haWwiOiJ0ZXN0ZXVzZXIxQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjAzNTAwNzMsImV4cCI6MTY2MDQzNjQ3M30.8QmdIOtBUQXhgLJN51Q4lZHyyKqde25du-lCIx7ftnA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"produtos\": [\r\n    {\r\n        \"produtoId\": 1001,\r\n        \"quantidade\": 1\r\n    },\r\n    {\r\n        \"produtoId\": 1003,\r\n        \"quantidade\": 1\r\n    },\r\n    {\r\n        \"produtoId\": 1003,\r\n        \"quantidade\": 1\r\n    }\r\n  ]\r\n}       ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/order/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"order",
+								"create"
 							]
 						}
 					},

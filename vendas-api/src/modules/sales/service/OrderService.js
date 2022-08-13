@@ -178,16 +178,16 @@ class OrderService {
       const { produtoId } = req.params;
       const { transactionid, serviceid } = req.headers;
       console.info(
-        `Request to GET orders by produtoId ${produtoId} | [transactionID: ${transactionid} | serviceID: ${serviceid}]`
+        `Requisição para as orders por produto id ${produtoId} | [transactionID: ${transactionid} | serviceID: ${serviceid}]`
       );
       this.validateInformedProductId(produtoId);
       const orders = await OrderRepository.findByProductId(produtoId);
       if (!orders) {
-        throw new OrderException(BAD_REQUEST, "No orders were found.");
+        throw new OrderException(BAD_REQUEST, "Nenhum pedido encontrado.");
       }
       let response = {
         status: SUCCESS,
-        salesIds: orders.map((order) => {
+        vendas: orders.map((order) => {
           return order.id;
         }),
       };
@@ -207,7 +207,7 @@ class OrderService {
 
   validateInformedId(id) {
     if (!id) {
-      throw new OrderException(BAD_REQUEST, "The order ID must be informed.");
+      throw new OrderException(BAD_REQUEST, "Id da Order deve ser informada.");
     }
   }
 
@@ -215,7 +215,7 @@ class OrderService {
     if (!id) {
       throw new OrderException(
         BAD_REQUEST,
-        "The order's productId must be informed."
+        "O Id do produto deve ser informado."
       );
     }
   }

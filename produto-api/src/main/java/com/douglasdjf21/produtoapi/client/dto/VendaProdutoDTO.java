@@ -14,5 +14,5 @@ import java.util.List;
 @Builder
 public class VendaProdutoDTO {
 
-    private List<String> vendaIds;
+    private List<String> vendas;
 }

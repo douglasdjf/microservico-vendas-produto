@@ -29,12 +29,12 @@ function startApplication() {
 
 app.get("/api/initial-data", (req, res) => {
   createInitialData();
-  return res.json({ message: "Data created." });
+  return res.json({ message: "Dados criados" });
 });
 
 app.use(tracing);
 app.use(userRoutes);
 
 app.listen(PORT, () => {
-  console.info(`Server started successfully at port ${PORT}`);
+  console.info(`Server iniciado com sucesso na porta ${PORT}`);
 });

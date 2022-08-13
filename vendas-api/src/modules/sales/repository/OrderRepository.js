@@ -28,10 +28,10 @@ class OrderRepository {
     }
   }
 
-  async findByProductId(productId) {
+  async findByProductId(produtoId) {
     try {
       return await Order.find({
-        "produtos.produtoId": Number(productId),
+        "produtos.produtoId": Number(produtoId),
       });
     } catch (error) {
       console.error(error.message);

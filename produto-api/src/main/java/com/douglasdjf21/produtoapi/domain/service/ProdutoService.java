@@ -83,7 +83,7 @@ public class ProdutoService {
     public Produto findById(Long id) {
         return produtoRepository
                 .findById(id)
-                .orElseThrow(() -> new ValidacaoException("There's no product for the given ID."));
+                .orElseThrow(() -> new ValidacaoException("Id do Produto Inválido"));
     }
 
 
@@ -180,7 +180,7 @@ public class ProdutoService {
                                                     .orElseThrow(()->  new ValidacaoException("vendas não encontrada para o produto informado"));
 
           ProdutoVendaDTO produtoVendas =  modelMapper.map(produto,ProdutoVendaDTO.class);
-          produtoVendas.inserirVendasIds(vendasProdutoDto.getVendaIds());
+          produtoVendas.inserirVendasIds(vendasProdutoDto.getVendas());
           return produtoVendas;
         }catch (Exception ex){
             throw  new ValidacaoException("Erro ao tentar obter as vendas do produto");
