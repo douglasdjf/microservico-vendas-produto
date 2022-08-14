@@ -297,6 +297,43 @@
 					"response": []
 				},
 				{
+					"name": "Status Heroku",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "transactionid",
+								"value": "{{$guid}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlVzZXIgVGVzdCAxIiwiZW1haWwiOiJ0ZXN0ZXVzZXIxQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjA1MTAyMDQsImV4cCI6MTY2MDU5NjYwNH0.Ql5SE-oEwo74zgA6Kb01lLTfJw18iwyrUVT2h6eNGn0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://microservico-produto-api.herokuapp.com/api/status",
+							"protocol": "https",
+							"host": [
+								"microservico-produto-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Buscar todos Categoria",
 					"request": {
 						"method": "GET",
@@ -324,6 +361,43 @@
 								"localhost"
 							],
 							"port": "8081",
+							"path": [
+								"api",
+								"categoria"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar todos Categoria Heroku",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "transactionid",
+								"value": "{{$guid}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlVzZXIgVGVzdCAxIiwiZW1haWwiOiJ0ZXN0ZXVzZXIxQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjA1MTAyMDQsImV4cCI6MTY2MDU5NjYwNH0.Ql5SE-oEwo74zgA6Kb01lLTfJw18iwyrUVT2h6eNGn0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://microservico-produto-api.herokuapp.com/api/categoria",
+							"protocol": "https",
+							"host": [
+								"microservico-produto-api",
+								"herokuapp",
+								"com"
+							],
 							"path": [
 								"api",
 								"categoria"
@@ -372,6 +446,46 @@
 					"response": []
 				},
 				{
+					"name": "Buscar todos Produto Heroku",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlVzZXIgVGVzdCAxIiwiZW1haWwiOiJ0ZXN0ZXVzZXIxQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjA1MTAyNzUsImV4cCI6MTY2MDU5NjY3NX0.Nmign0gp0nMKb6tG1c1aqPqZpXGzlzBrRKATok-nsDk",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "transactionid",
+								"value": "{{$guid}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://microservico-produto-api.herokuapp.com/api/produto",
+							"protocol": "https",
+							"host": [
+								"microservico-produto-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"produto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Buscar todos Fornecedor",
 					"request": {
 						"method": "GET",
@@ -394,6 +508,38 @@
 								"localhost"
 							],
 							"port": "8081",
+							"path": [
+								"api",
+								"fornecedor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar todos Fornecedor Heroku",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlVzZXIgVGVzdCAxIiwiZW1haWwiOiJ0ZXN0ZXVzZXIxQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjA1MTAyNzUsImV4cCI6MTY2MDU5NjY3NX0.Nmign0gp0nMKb6tG1c1aqPqZpXGzlzBrRKATok-nsDk",
+								"type": "text"
+							},
+							{
+								"key": "transactionid",
+								"value": "{{$guid}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://microservico-produto-api.herokuapp.com/api/fornecedor",
+							"protocol": "https",
+							"host": [
+								"microservico-produto-api",
+								"herokuapp",
+								"com"
+							],
 							"path": [
 								"api",
 								"fornecedor"
@@ -687,6 +833,48 @@
 					"response": []
 				},
 				{
+					"name": "Check-Estoque Heroku",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlVzZXIgVGVzdCAxIiwiZW1haWwiOiJ0ZXN0ZXVzZXIxQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjA1MTAyNzUsImV4cCI6MTY2MDU5NjY3NX0.Nmign0gp0nMKb6tG1c1aqPqZpXGzlzBrRKATok-nsDk",
+								"type": "text"
+							},
+							{
+								"key": "transactionid",
+								"value": "{{$guid}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"produtos\": [\r\n      {\r\n        \"produtoId\": 1001,\r\n        \"quantidade\": 10\r\n      },\r\n      {\r\n        \"produtoId\": 1002,\r\n        \"quantidade\": 3\r\n      },\r\n      {\r\n        \"produtoId\": 1003,\r\n        \"quantidade\": 3\r\n      }\r\n    ]\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://microservico-produto-api.herokuapp.com/api/produto/check-estoque",
+							"protocol": "https",
+							"host": [
+								"microservico-produto-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"produto",
+								"check-estoque"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Order Por Produto Id",
 					"request": {
 						"method": "GET",
@@ -916,6 +1104,45 @@
 					"response": []
 				},
 				{
+					"name": "Order Por Produto Id Heroku",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/ecmascript",
+								"type": "text"
+							},
+							{
+								"key": "transactionid",
+								"value": "{{$guid}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlVzZXIgVGVzdCAxIiwiZW1haWwiOiJ0ZXN0ZXVzZXIxQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjA1MDAyNjEsImV4cCI6MTY2MDU4NjY2MX0.nKaij1oElDCCIes3Zq8jMsh4ZkxONpilPLUFbEXMiXs",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://microservico-vendas-api.herokuapp.com/api/orders/produto/1003",
+							"protocol": "https",
+							"host": [
+								"microservico-vendas-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"orders",
+								"produto",
+								"1003"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Incluir Order",
 					"protocolProfileBehavior": {
 						"disabledSystemHeaders": {
@@ -937,7 +1164,7 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlVzZXIgVGVzdCAxIiwiZW1haWwiOiJ0ZXN0ZXVzZXIxQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjA1MDAyNjEsImV4cCI6MTY2MDU4NjY2MX0.nKaij1oElDCCIes3Zq8jMsh4ZkxONpilPLUFbEXMiXs",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlVzZXIgVGVzdCAxIiwiZW1haWwiOiJ0ZXN0ZXVzZXIxQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjA1MTAyNzUsImV4cCI6MTY2MDU5NjY3NX0.Nmign0gp0nMKb6tG1c1aqPqZpXGzlzBrRKATok-nsDk",
 								"type": "text"
 							}
 						],
@@ -957,6 +1184,58 @@
 								"localhost"
 							],
 							"port": "8082",
+							"path": [
+								"api",
+								"order",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Incluir Order Heroku",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "transactionid",
+								"value": "{{$guid}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlVzZXIgVGVzdCAxIiwiZW1haWwiOiJ0ZXN0ZXVzZXIxQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjA1MTAyNzUsImV4cCI6MTY2MDU5NjY3NX0.Nmign0gp0nMKb6tG1c1aqPqZpXGzlzBrRKATok-nsDk",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"produtos\": [\r\n      {\r\n        \"produtoId\": 1001,\r\n        \"quantidade\": 10\r\n      },\r\n      {\r\n        \"produtoId\": 1002,\r\n        \"quantidade\": 3\r\n      },\r\n      {\r\n        \"produtoId\": 1003,\r\n        \"quantidade\": 3\r\n      }\r\n    ]\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://microservico-vendas-api.herokuapp.com/api/order/create",
+							"protocol": "https",
+							"host": [
+								"microservico-vendas-api",
+								"herokuapp",
+								"com"
+							],
 							"path": [
 								"api",
 								"order",
