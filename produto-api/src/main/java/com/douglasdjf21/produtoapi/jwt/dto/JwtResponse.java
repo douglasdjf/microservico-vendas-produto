@@ -6,7 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Data
 @Builder
 @NoArgsConstructor
@@ -19,7 +21,10 @@ public class JwtResponse {
 
     public static JwtResponse getUser(Claims jwtClaims) {
         try {
-            return new ObjectMapper().convertValue(jwtClaims.get("authUser"), JwtResponse.class);
+            log.info("getUser");
+            JwtResponse authClaims = new ObjectMapper().convertValue(jwtClaims.get("authUser"), JwtResponse.class);
+            log.info("authClaims:" +authClaims);
+            return authClaims ;
         } catch (Exception ex) {
             ex.printStackTrace();
             return null;

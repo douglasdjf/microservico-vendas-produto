@@ -93,10 +93,11 @@ public class ProdutoService {
      */
     public void atualizaProdutoEstoque(ProdutoEstoqueDTO produtoEstoqueDTO) {
         try {
+            log.info("atualizaProdutoEstoque");
             validaEstoqueAtualizaDados(produtoEstoqueDTO);
             atualizaEstoque(produtoEstoqueDTO);
         } catch (Exception ex) {
-            log.error("Error while trying to update stock for message with error: {}", ex.getMessage(), ex);
+            log.error("Erro ao tentar atualizar o estoque: {}", ex.getMessage(), ex);
             var rejectedMessage = VendaConfirmadaDTO.builder()
                                       .vendaId(produtoEstoqueDTO.getVendaId())
                                       .transactionId(produtoEstoqueDTO.getTransactionId())
@@ -113,6 +114,7 @@ public class ProdutoService {
      * @param produtoEstoqueDTO
      */
     private void validaEstoqueAtualizaDados(ProdutoEstoqueDTO produtoEstoqueDTO) {
+        log.info("validaEstoqueAtualizaDados");
         if (isEmpty(produtoEstoqueDTO)
                 || isEmpty(produtoEstoqueDTO.getVendaId())) {
             throw new ValidacaoException("As informações do produto e vendas id deve ser informados .");
@@ -120,6 +122,7 @@ public class ProdutoService {
         if (isEmpty(produtoEstoqueDTO.getProdutos())) {
             throw new ValidacaoException("Os produtos da venda devem ser informados.");
         }
+        log.info("produtoEstoqueDTO: " + produtoEstoqueDTO);
         produtoEstoqueDTO
                 .getProdutos()
                 .forEach(vendasProduto -> {
@@ -136,7 +139,11 @@ public class ProdutoService {
      */
     @Transactional
     private void atualizaEstoque(ProdutoEstoqueDTO produtoEstoqueDTO) {
+        log.info("atualizaEstoque");
+        log.info("produtoEstoqueDTO: " + produtoEstoqueDTO);
+
         var produtosParaAtualizar = new ArrayList<Produto>();
+
         produtoEstoqueDTO
                 .getProdutos()
                 .forEach(vendasProduto -> {
@@ -166,6 +173,8 @@ public class ProdutoService {
      */
     private void validaQuantidadeEmEstoque(ProdutoQuantidadeDTO produtoQuantidadeDTO,
                                            Produto existingProduct) {
+
+        log.info("validaQuantidadeEmEstoque");
         if (produtoQuantidadeDTO.getQuantidade() > existingProduct.getQuantidade()) {
             throw new ValidacaoException(
                     String.format("The product %s is out of stock.", existingProduct.getId()));
@@ -173,6 +182,8 @@ public class ProdutoService {
     }
 
     public ProdutoVendaDTO obterProdutoVendas(Long id) {
+        log.info("obterProdutoVendas");
+        log.info("id: " + id);
         Produto produto = findById(id);
         try{
             VendaProdutoDTO vendasProdutoDto = vendasClient
@@ -190,6 +201,8 @@ public class ProdutoService {
     }
 
     public RetornoDTO checkProdutoEstoque(ProdutoValidaEstoqueDTO  produtoValidaEstoqueDTO){
+        log.info("checkProdutoEstoque");
+        log.info("produtoValidaEstoqueDTO: " + produtoValidaEstoqueDTO);
         if(ObjectUtils.isEmpty(produtoValidaEstoqueDTO) || ObjectUtils.isEmpty(produtoValidaEstoqueDTO.getProdutos()) )
             throw new ValidacaoException("Produto de validação de estoque inválido");
 

@@ -2,6 +2,20 @@ version: '3.8'
 
 services:
 
+  vendas-db:
+    container_name: vendas-db
+    image: mongo:latest
+    restart: always
+    networks:
+      - vendas-network
+    ports:
+      - 27017:27017
+      - 28017:28017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=123456
+      - MONGO_INITDB_DATABASE=vendas
+
   auth-db:
     container_name: auth-db
     image: postgres
@@ -14,6 +28,20 @@ services:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_DB=auth
+
+  rabbitmq-vendas:
+    container_name: rabbitmq-vendas
+    image: rabbitmq:3.8-management
+    hostname: rabbitmq-vendas
+    networks:
+      - vendas-network
+    ports:
+      - 5672:5672
+      - 25676:25676
+      - 15672:15672
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin  
 
   produto-db:
     container_name: produto-db
@@ -28,60 +56,6 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_DB=produto
 
-  vendas-db:
-    container_name: vendas-db
-    image: mongo:latest
-    restart: always
-    networks:
-      - vendas-network
-    ports:
-      - 27017:27017
-      - 28017:28017
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=admin
-      - MONGO_INITDB_ROOT_PASSWORD=admin
-
-  rabbitmq-vendas:
-    container_name: rabbitmq
-    image: rabbitmq:3.8-management
-    networks:
-      - vendas-network
-    ports:
-      - 5672:5672
-      - 25676:25676
-      - 15672:15672
-    environment:
-      - RABBITMQ_DEFAULT_USER=admin
-      - RABBITMQ_DEFAULT_PASS=admin
-  
-  auth-api:
-    build: './auth-api'
-    image: auth-api:1.0
-    container_name: auth-api
-    depends_on:
-      - auth-db
-    networks:
-      - vendas-network
-    ports:
-      - 8080:8080
-    environment:
-      - PORT=8080
-  
-  vendas-api:
-    build: './vendas-api'
-    image: vendas-api:1.0
-    container_name: vendas-api
-    depends_on:
-      - vendas-db
-      - produto-api
-      - rabbitmq-vendas
-    networks:
-      - vendas-network
-    ports:
-      - 8082:8082
-    environment:
-      - PORT=8082
-    
   produto-api:
     build: './produto-api'
     image: produto-api:1.0
@@ -95,7 +69,58 @@ services:
       - 8081:8081
     environment:
       - PORT=8081
+      - API_SECRET=YXV0aC1hcGktc2VjcmV0LXByb2QtY29udGFpbmVyLTEyMzQ1Ng==
+      - DB_HOST=produto-db
+      - DB_NAME=produto
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_PORT=5432
+      - RABBIT_MQ_HOST=rabbitmq-vendas
+      - RABBIT_MQ_PORT=5672
+      - RABBIT_MQ_USER=admin
+      - RABBIT_MQ_PASSWORD=admin
+      - VENDAS_HOST=vendas-api
+      - VENDAS_PORT=8082
 
+  vendas-api:
+    build: './vendas-api'
+    image: vendas-api:1.0
+    container_name: vendas-api
+    depends_on:
+      - vendas-db
+      - rabbitmq-vendas
+      - produto-api
+    networks:
+      - vendas-network
+    ports:
+      - 8082:8082
+    environment:
+      - PORT=8082
+      - API_SECRET=YXV0aC1hcGktc2VjcmV0LXByb2QtY29udGFpbmVyLTEyMzQ1Ng==
+      - MONGO_DB_URL=mongodb://admin:123456@vendas-db:27017/vendas?authSource=admin
+      - RABBIT_MQ_URL=amqp://admin:admin@rabbitmq-vendas:5672/
+      - PRODUCT_API_URL=http://produto-api:8081/api/produto
+      - NODE_ENV=container  
+
+  auth-api:
+    build: './auth-api'
+    image: auth-api:1.0
+    container_name: auth-api
+    depends_on:
+      - auth-db
+    networks:
+      - vendas-network
+    ports:
+      - 8080:8080
+    environment:
+      - PORT=8080
+      - API_SECRET=YXV0aC1hcGktc2VjcmV0LXByb2QtY29udGFpbmVyLTEyMzQ1Ng==
+      - DB_HOST=auth-db
+      - DB_NAME=auth
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_PORT=5432
+      - NODE_ENV=container    
 
 networks:
   vendas-network:

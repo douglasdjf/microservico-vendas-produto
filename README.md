@@ -6,11 +6,6 @@
 yarn init -y
 ```
 
-### Abrir VsCode
-```
-code .
-```
-
 ### Adicionar Dependências
 ```
 yarn add express

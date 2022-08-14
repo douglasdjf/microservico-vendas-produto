@@ -18,7 +18,7 @@ startApplication();
 
 async function startApplication() {
   if (CONTAINER_ENV === env.NODE_ENV) {
-    console.info("Waiting for RabbitMQ and MongoDB containers to start...");
+    console.info("Aguardando o RabbitMQ e MongoDB para iniciar...");
     setInterval(() => {
       connectMongoDb();
       connectRabbitMq();
