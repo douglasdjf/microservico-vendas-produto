@@ -6,7 +6,7 @@
 yarn init -y
 ```
 
-### Adicionar Dependências
+### Principais  Dependências dos projetos node
 ```
 yarn add express
 ```
@@ -35,6 +35,19 @@ yarn add pg
 yarn add bcrypt
 ```
 
+```
+yarn add uuid
+```
+
+```
+yarn add axios
+```
+
+```
+yarn add amqplib
+```
+
+
 OBS: caso ocorra um erro de Execution_Policies desabilitada é necessário abrir o PoweShell(como administrador) e executar o comando
 
 ```
@@ -62,7 +75,7 @@ yarn startContainer
 docker image build -t auth-api:1.0 .
 ```
 
-### Executar a imagem docker
+### Executar a imagem docker (básica)
 
 ```
 docker run --name auth-api -e PORT=8080 -p 8080:8080 auth-api:1.0
@@ -75,7 +88,7 @@ docker run --name auth-api -e PORT=8080 -p 8080:8080 auth-api:1.0
 docker image build -t vendas-api:1.0 .
 ```
 
-### Executar a imagem docker
+### Executar a imagem docker (básica)
 
 ```
 docker run --name vendas-api -e PORT=8082 -p 8082:8082 vendas-api:1.0
@@ -90,7 +103,7 @@ docker run --name vendas-api -e PORT=8082 -p 8082:8082 vendas-api:1.0
 docker image build -t produto-api:1.0 .
 ```
 
-### Executar a imagem docker
+### Executar a imagem docker (básica)
 
 ```
 docker run --name produto-api -e PORT=8081 -p 8081:8081 produto-api:1.0
@@ -107,7 +120,37 @@ docker-compose up --build
 ```
 
 
-# Hospedagem 
+# MongoDB 
+
+### Acesso feito pelo MongoDB Compass dentro do Docker pela URI: 
+
+```
+ mongodb://admin:123456@localhost:27017/vendas?authSource=admin
+```
+
+OBS: Apesar de a url está informando localhost, é o localhost da maquina com o container.
+OBS: lembrar que verificar se está rodando o servidor local do mongodb pois terá conflito com o localhost do container.
+
+### Acesso MongoDB executando  da aplicação de vendas fora do Docker é feita pela URI :
+
+```
+mongodb://localhost:27017
+```
+
+# RabbitMQ
+
+### Acesso do RabbitMQ dentro do Docker é feita pela URI:
+```
+amqp://admin:admin@rabbitmq-vendas:5672/
+```
+
+### Acesso do RabbitMQ fora do Docker é feita pela URI:
+```
+amqp://admin:admin@localhost:5672
+```
+
+
+# Hospedagem/Sugestão
 
 ### Heroku: https://dashboard.heroku.com/apps
 ### Mongo Cloud: https://cloud.mongodb.com/v2/62f890f854f18a7fc5a400c1#setup/access?includeToast=true
