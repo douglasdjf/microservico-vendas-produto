@@ -113,6 +113,48 @@
 					"response": []
 				},
 				{
+					"name": "email Heroku",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlVzZXIgVGVzdCAxIiwiZW1haWwiOiJ0ZXN0ZXVzZXIxQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjA0NTQxNjIsImV4cCI6MTY2MDU0MDU2Mn0.LXCo7aT5KcMX71BU8acPXdLtKbg1ROkJIrZ_Lcw8Wu0",
+								"type": "text"
+							},
+							{
+								"key": "transactionid",
+								"value": "{{$guid}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://microservico-auth-api.herokuapp.com/api/user/email/testeuser1@gmail.com",
+							"protocol": "https",
+							"host": [
+								"microservico-auth-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"user",
+								"email",
+								"testeuser1@gmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Token",
 					"request": {
 						"auth": {
@@ -153,6 +195,57 @@
 								"localhost"
 							],
 							"port": "8080",
+							"path": [
+								"api",
+								"user",
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Token Heroku",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "transactionid",
+								"value": "{{$guid}}",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"testeuser1@gmail.com\",\r\n    \"password\":\"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://microservico-auth-api.herokuapp.com/api/user/auth",
+							"protocol": "https",
+							"host": [
+								"microservico-auth-api",
+								"herokuapp",
+								"com"
+							],
 							"path": [
 								"api",
 								"user",
@@ -674,6 +767,44 @@
 					"response": []
 				},
 				{
+					"name": "Obter por Order Id Heroku",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/ecmascript",
+								"type": "text"
+							},
+							{
+								"key": "transactionid",
+								"value": "{{$guid}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlVzZXIgVGVzdCAxIiwiZW1haWwiOiJ0ZXN0ZXVzZXIxQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjA0NTUwMDYsImV4cCI6MTY2MDU0MTQwNn0.Kow0pUdHdXnO2MdeNLgGLgafanzZsnbAQ_5PbOIvVOU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://microservico-vendas-api.herokuapp.com/api/order/62f9529e3fafe91f134e73dc",
+							"protocol": "https",
+							"host": [
+								"microservico-vendas-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"order",
+								"62f9529e3fafe91f134e73dc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Obter Todos Order",
 					"request": {
 						"method": "GET",
@@ -690,7 +821,7 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlVzZXIgVGVzdCAxIiwiZW1haWwiOiJ0ZXN0ZXVzZXIxQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjA0MTI3OTYsImV4cCI6MTY2MDQ5OTE5Nn0.rRVgCMNHbhLFxfqyTNbWutMEOrwf48XnPX_1PRayKug",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlVzZXIgVGVzdCAxIiwiZW1haWwiOiJ0ZXN0ZXVzZXIxQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjA1MDAyNjEsImV4cCI6MTY2MDU4NjY2MX0.nKaij1oElDCCIes3Zq8jMsh4ZkxONpilPLUFbEXMiXs",
 								"type": "text"
 							}
 						],
@@ -701,6 +832,43 @@
 								"localhost"
 							],
 							"port": "8082",
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obter Todos Order Heroku",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "transactionid",
+								"value": "{{$guid}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlVzZXIgVGVzdCAxIiwiZW1haWwiOiJ0ZXN0ZXVzZXIxQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjA1MDAyNjEsImV4cCI6MTY2MDU4NjY2MX0.nKaij1oElDCCIes3Zq8jMsh4ZkxONpilPLUFbEXMiXs",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://microservico-vendas-api.herokuapp.com/api/orders",
+							"protocol": "https",
+							"host": [
+								"microservico-vendas-api",
+								"herokuapp",
+								"com"
+							],
 							"path": [
 								"api",
 								"orders"
@@ -726,7 +894,7 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlVzZXIgVGVzdCAxIiwiZW1haWwiOiJ0ZXN0ZXVzZXIxQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjA0NTQxNjIsImV4cCI6MTY2MDU0MDU2Mn0.LXCo7aT5KcMX71BU8acPXdLtKbg1ROkJIrZ_Lcw8Wu0",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlVzZXIgVGVzdCAxIiwiZW1haWwiOiJ0ZXN0ZXVzZXIxQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjA1MDAyNjEsImV4cCI6MTY2MDU4NjY2MX0.nKaij1oElDCCIes3Zq8jMsh4ZkxONpilPLUFbEXMiXs",
 								"type": "text"
 							}
 						],
@@ -769,7 +937,7 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlVzZXIgVGVzdCAxIiwiZW1haWwiOiJ0ZXN0ZXVzZXIxQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjA0NTUwMDYsImV4cCI6MTY2MDU0MTQwNn0.Kow0pUdHdXnO2MdeNLgGLgafanzZsnbAQ_5PbOIvVOU",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoVXNlciI6eyJpZCI6MSwibmFtZSI6IlVzZXIgVGVzdCAxIiwiZW1haWwiOiJ0ZXN0ZXVzZXIxQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NjA1MDAyNjEsImV4cCI6MTY2MDU4NjY2MX0.nKaij1oElDCCIes3Zq8jMsh4ZkxONpilPLUFbEXMiXs",
 								"type": "text"
 							}
 						],
